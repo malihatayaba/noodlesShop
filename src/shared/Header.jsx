@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo/logo-bg.png";
 const Header = () => {
   return (
-    <div className="navbar bg-base-100">
-      <div className="navbar-start">
+    <div className="navbar bg-black ">
+      <div className="navbar-start  ">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -48,10 +48,10 @@ const Header = () => {
           <img style={{ height: "80px" }} src={logo} alt="logo " />
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+      <div className="navbar-center hidden lg:flex text-yellow-500 font-bold">
+        <ul className="menu menu-horizontal px-1 ">
           <li>
-            {" "}
+           
             <Link to="/homepage">HOME</Link>
           </li>
 
@@ -69,10 +69,10 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn">
+        <Link to="/login" className="btn  bg-yellow-500 border-black text-black font-bold m-2 hover:bg-yellow-400 ">
           LOG IN
         </Link>
-        <Link to="/signup" className="btn">
+        <Link to="/signup" className="btn  bg-yellow-500 border-black text-black font-bold m-2 hover:bg-yellow-400 ">
           SIGN UP
         </Link>
       </div>

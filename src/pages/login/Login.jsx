@@ -37,10 +37,10 @@ const Login = () => {
   
           <input
             type="submit"
-            className="btn btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-outline btn-accent"
+            className="btn btn-primary block mt-4 w-1/2 text-x"
           />
         </form>
-        <button onClick={handleGoogleSignIn} className="bg-blue-500 text-white w-1/4 mt-4">
+        <button onClick={handleGoogleSignIn} className="bg-blue-500 text-white w-1/4 mt-4 rounded ">
         <FaGoogle style={{fontSize:"36px", textAlign:"center"}} />
         </button>
       </div>

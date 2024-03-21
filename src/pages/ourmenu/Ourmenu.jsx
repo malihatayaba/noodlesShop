@@ -1,10 +1,11 @@
+import Menu from "../../menu/Menu";
 
 
 const Ourmenu = () => {
     return (
-        <div className="min-h-screen">
-            Page coming soon
-        </div>
+       <>
+        <Menu/>
+       </>
     );
 };
 
