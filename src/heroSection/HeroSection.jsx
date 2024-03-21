@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import heroSection from "../assets/images/Ramen-noodle-bowl.jpg";
 const HeroSection = () => {
   return (
@@ -13,9 +14,10 @@ const HeroSection = () => {
           <p className="mb-5 font-semibold text-2xl text-yellow-500">
             From Bowl to Soul: Noodles that delight!
           </p>
+          <Link to="/contactus">
           <button className="btn text-lg bg-yellow-500 border-black text-black font-bold m-2 hover:bg-yellow-400  ">
             Book A Table
-          </button>
+          </button></Link>
         </div>
       </div>
     </div>

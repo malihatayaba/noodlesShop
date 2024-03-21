@@ -44,7 +44,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <Link to="/">
+        <Link to="/homepage">
           <img style={{ height: "80px" }} src={logo} alt="logo " />
         </Link>
       </div>

@@ -3,11 +3,13 @@ import MenuHome from "../../menu/MenuHome";
 
 
 
+
 const Homepage = () => {
     return (
         <div>
             <HeroSection/>
             <MenuHome/>
+        
         </div>
     );
 };

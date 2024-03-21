@@ -1,0 +1,45 @@
+[
+    {
+        "id":1,
+        "name": "Ramen",
+        "price": "6$",
+        "img": "https://img.freepik.com/free-photo/korean-instant-noodle-tteokbokki-korean-spicy-sauce-ancient-food_1150-42997.jpg?t=st=1710956225~exp=1710959825~hmac=6b04d095002cc98a77f4f418a3d6f782cbeb2081d57fea32ae7d37ed2bffd8ed&w=900"
+
+         
+      },
+      {
+        "id":2,
+          "name": "Chicken Noodles",
+          "price": "8$",
+          "img": "https://img.freepik.com/free-photo/thai-food-noodles-spicy-boil-with-pork-boil-egg_1150-27970.jpg?t=st=1710976413~exp=1710980013~hmac=19f96df6aa4cc4eeaf35666fdff4e279cc49c3be042a869b1404350950ec2b65&w=996"
+            
+      },
+      {
+        "id":3,
+          "name": "Sesame Noodles",
+          "price": "12$",
+          "img": "https://img.freepik.com/free-photo/top-view-delicious-noodles-concept_23-2148773775.jpg?t=st=1710976599~exp=1710980199~hmac=08e7e49ed11f366c48d631436c8842a603e227c7a31f7eb2c11edeb56cb1a8a9&w=996"
+           
+      },
+      {
+        "id":4,
+          "name": "Beef Noodles",
+          "price": "10$",
+          "img": "https://img.freepik.com/free-photo/top-view-delicious-noodles-concept_23-2148773777.jpg?t=st=1710977533~exp=1710981133~hmac=653588cc56b7f2683bf099f44fc3cb9d8f2dfceb71967ff534074d73ba7f67e7&w=996"
+           
+      },
+      {
+        "id":5,
+          "name": "Shrimp Noodles",
+          "price": "13$",
+          "img": "https://img.freepik.com/free-photo/pasta-spaghetti-with-shrimps-sauce_1220-5069.jpg?t=st=1710977187~exp=1710980787~hmac=0e7807caaff1aa4482b180faa66d7d90d975c3976b0778972d425bedf2bc9bb8&w=996"
+           
+      },
+      {
+        "id":6,
+        "name": "Peanut Noodles",
+        "price": "7$",
+        "img": "https://img.freepik.com/free-photo/style-still-life-with-noodles-bowl_1150-19766.jpg?t=st=1710956395~exp=1710959995~hmac=07ca39ffc1b80bc357ff87cbca87c1b8d0443070467feae255f0d1a5e3ad8981&w=900"
+        
+    }
+]
