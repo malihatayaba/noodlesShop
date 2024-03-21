@@ -3,7 +3,7 @@ import {useSignInWithGoogle} from "react-firebase-hooks/auth";
 import { FaGoogle } from "react-icons/fa";
 import auth from "../../../firebase.init";
 const Login = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, user] = useSignInWithGoogle(auth);
     const {
         register,
         handleSubmit,
@@ -17,8 +17,8 @@ const Login = () => {
     
       const onSubmit = (data) => console.log(data);
     return (
-        <div className="m-auto w-1/2 mt-10">
-            <h1 className="font-semibold text-3xl text large text center text-blue-400 mb-4 ">LOG IN HERE</h1>
+        <div className="m-auto w-1/2 mt-10 ">
+            <h1 className="font-semibold text-3xl text-blue-400 mb-4 ">LOG IN HERE</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <input
@@ -37,10 +37,10 @@ const Login = () => {
   
           <input
             type="submit"
-            className="btn btn-primary block mt-4 w-1/2 text-x"
+            className="btn btn-primary block mt-4 w-1/2"
           />
         </form>
-        <button onClick={handleGoogleSignIn} className="bg-blue-500 text-white w-1/4 mt-4 rounded ">
+        <button onClick={handleGoogleSignIn} className="bg-blue-500 text-white w-1/2 mt-4 rounded ">
         <FaGoogle style={{fontSize:"36px", textAlign:"center"}} />
         </button>
       </div>

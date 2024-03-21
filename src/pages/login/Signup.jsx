@@ -31,9 +31,10 @@ const Signup = () => {
   
   return (
     <div className="m-auto w-1/2 mt-10">
-      <h1 className="font-semibold text-3xl text-center mb-4">Sign up here</h1>
+      <h1 className="font-semibold text-3xl  mb-4">Sign up here</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
+        <label className="block">Name</label>
           <input
             className="input input-bordered input-info w-full max-w-xs"
             defaultValue=""
@@ -46,7 +47,7 @@ const Signup = () => {
           <input
             className="input input-bordered input-info w-full max-w-xs"
             {...register("email", { required: true })}
-            placeholder="email"
+            placeholder="Email"
           />
         </div>
         {errors.email && (
@@ -58,6 +59,7 @@ const Signup = () => {
           <input
             className="input input-bordered input-info w-full max-w-xs"
             {...register("password", { required: true })}
+            placeholder="Password"
           />
         </div>
         {errors.password && (<span>Password is required</span>)}
