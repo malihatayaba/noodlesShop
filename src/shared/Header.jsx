@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo/logo-bg.png";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 const Header = () => {
+  const [user] = useAuthState(auth);
+  const [signOut] = useSignOut (auth);
+  console.log(user);
   return (
     <div className="navbar bg-black ">
       <div className="navbar-start  ">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden" >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -51,7 +56,6 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex text-yellow-500 font-bold">
         <ul className="menu menu-horizontal px-1 ">
           <li>
-           
             <Link to="/homepage">HOME</Link>
           </li>
 
@@ -69,12 +73,28 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn  bg-yellow-500 border-black text-black font-bold m-2 hover:bg-yellow-400 ">
-          LOG IN
-        </Link>
-        <Link to="/signup" className="btn  bg-yellow-500 border-black text-black font-bold m-2 hover:bg-yellow-400 ">
-          SIGN UP
-        </Link>
+        {user ? (
+          <button className="btn bg-yellow-500 border-black text-black font-bold m-2 hover:bg-yellow-400" onClick={signOut}>
+            Logout
+          </button>
+        ) : (
+          <>
+            <Link
+              to="/login"
+              className="btn  bg-yellow-500 border-black text-black font-bold m-2 hover:bg-yellow-400 "
+            >
+              LOG IN
+            </Link>
+            <Link
+              to="/signup"
+              className="btn  bg-yellow-500 border-black text-black font-bold m-2 hover:bg-yellow-400 "
+            >
+              SIGN UP
+            </Link>
+          </>
+        )}
+
+        
       </div>
     </div>
   );

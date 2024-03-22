@@ -1,51 +1,85 @@
 import { useForm } from "react-hook-form";
-import {useSignInWithGoogle} from "react-firebase-hooks/auth";
-import { FaGoogle } from "react-icons/fa";
 import auth from "../../../firebase.init";
+import Loading from "../../shared/Loading";
+import { Link, useNavigate } from "react-router-dom";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import toast from "react-hot-toast";
+
 const Login = () => {
-    const [signInWithGoogle, user] = useSignInWithGoogle(auth);
-    const {
-        register,
-        handleSubmit,
-        // watch,
-        formState: { errors },
-      } = useForm();
-      const handleGoogleSignIn =() =>{
-        signInWithGoogle()
-      }
-      console.log(user)
-    
-      const onSubmit = (data) => console.log(data);
-    return (
-        <div className="m-auto w-1/2 mt-10 ">
-            <h1 className="font-semibold text-3xl text-blue-400 mb-4 ">LOG IN HERE</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="mb-4">
-            <input
-              className="input input-bordered input-info w-full max-w-xs"
-              defaultValue=""
-              {...register("name")}
-            />
-          </div>
-          <div className="mb-4">
-            <input
-              className="input input-bordered input-info w-full max-w-xs"
-              {...register("emailRequired", { required: true })}
-            />
-          </div>
-          {errors.emailRequired && <span>This field is required</span>}
-  
-          <input
-            type="submit"
-            className="btn btn-primary block mt-4 w-1/2"
-          />
-        </form>
-        <button onClick={handleGoogleSignIn} className="bg-blue-500 text-white w-1/2 mt-4 rounded ">
-        <FaGoogle style={{fontSize:"36px", textAlign:"center"}} />
-        </button>
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
+ const navigate=useNavigate()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit=(data)=>{
+    console.log(data)
+    signInWithEmailAndPassword(data.email,data.password)
+
+  }
+
+  if(user){
+    toast.success("Logged in..");
+    navigate("/homepage");
+  }
+
+  return (
+    <div className="m-auto w-1/2 mt-10">
+    <h1 className="font-semibold text-3xl  mb-4 ">Login Here</h1>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="mb-4">
+        <label className="block">Email</label>
+        <input
+          className="input input-bordered input-info w-full max-w-xs"
+          {...register("email", { required: true })}
+          placeholder="email"
+        />
       </div>
-        
-    );
+      {errors.email && (
+        <span className="text-red-600">Email is required</span>
+      )}
+
+      <div>
+        <label className="block">Password</label>
+        <input
+          className="input input-bordered input-info w-full max-w-xs"
+          {...register("password", { required: true })}
+          placeholder="password"
+          type="password"
+        />
+      </div>
+      {errors.password && (
+        <span className="text-red-600">Password is required</span>
+      )}
+      {loading ? (
+        <Loading/>
+      ) : (
+        <input
+          className="btn btn-primary block mt-4 w-1/2 text-xl"
+          type="submit"
+        />
+      )}
+
+      <Link to="/signup" className="text-blue-600">
+        Not an Account? Sign up here.
+      </Link>
+
+      {error && (
+        <h1 className="text-red-700 text-center mt-6 text-2xl font-semibold">
+          {error.message}
+        </h1>
+      )}
+    </form>
+  </div>
+
+  );
 };
 
 export default Login;

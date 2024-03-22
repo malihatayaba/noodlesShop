@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import{useCreateUserWithEmailAndPassword} from "react-firebase-hooks/auth"
+import{useCreateUserWithEmailAndPassword, useUpdateProfile} from "react-firebase-hooks/auth"
 import auth from "../../../firebase.init";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -11,23 +11,26 @@ const Signup = () => {
     loading,
     error,
   ] = useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating] = useUpdateProfile(auth);
   const navigate = useNavigate()
   const {
     register,
     handleSubmit,
-    // watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async(data) => {
-    await createUserWithEmailAndPassword(data.email,data.password)
+    await createUserWithEmailAndPassword(data.email,data.password);
+    await updateProfile({displayName:data.name})
+  };
     console.log(user)
+   
     if (user) {
       toast.success("user created successfully");
-      return navigate("/");
+      return navigate("/homepage");
       
     }
-  };
+  
   
   return (
     <div className="m-auto w-1/2 mt-10">
@@ -37,8 +40,7 @@ const Signup = () => {
         <label className="block">Name</label>
           <input
             className="input input-bordered input-info w-full max-w-xs"
-            defaultValue=""
-            {...register("name")}
+             {...register("name")}
             placeholder="Your Name"
           />
         </div>
@@ -60,11 +62,12 @@ const Signup = () => {
             className="input input-bordered input-info w-full max-w-xs"
             {...register("password", { required: true })}
             placeholder="Password"
+            type="password"
           />
         </div>
         {errors.password && (<span>Password is required</span>)}
 
-        {loading ? (
+        {loading ||updating ? (
           <Loading/>
         ) : (
           <input
@@ -74,7 +77,7 @@ const Signup = () => {
         )}
 
         {
-          error && <h1 className="text-red-700 text-center mt-5 text-2xl">Something went wrong....!</h1>
+          error && <h1 className="text-red-700 text-center mt-5 text-2xl">{error.message}</h1>
         }
 
         <Link to="/login" className="text-blue-600">
